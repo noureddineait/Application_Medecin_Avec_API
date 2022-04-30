@@ -91,8 +91,6 @@ namespace Application_pour_medecin.ViewModels
         }
         public ICommand AddDoctorCommand { get; private set; }
         public ICommand ConnexionCommand { get; private set; }
-        //public ICommand MyCommand { get; private set; }
-
         public ICommand QuitterCommand { get; private set; }
         public ICommand OpenCreation { get; private set; }
 
@@ -189,9 +187,6 @@ namespace Application_pour_medecin.ViewModels
             if (out_register.Status != "Error")
             {
                 MessageBox.Show(out_register.Status);
-                /*Bienvenue_Dr bienvenue_Dr = new Bienvenue_Dr(SelectedDoctor);
-                bienvenue_Dr.Show();
-                _window.Close();*/
                 foreach (Window window in Application.Current.Windows)
                 {
                     if (window != _window)

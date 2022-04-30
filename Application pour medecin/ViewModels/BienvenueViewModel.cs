@@ -17,8 +17,7 @@ namespace Application_pour_medecin.ViewModels
     {
         private Window _window;
         public Models.Medecin Medecin { get; set; }
-        //public Models.Medecin OldMedecin=Medecin;
-        
+
         
         // POUR INFORMATION
         private ObservableCollection<string> _villes;
@@ -360,6 +359,7 @@ namespace Application_pour_medecin.ViewModels
 
             _villesPatient = new ObservableCollection<string>()
             {
+                "Berrechid",
                 "Casablanca",
                 "Marrakech",
                 "Tanger",
@@ -415,16 +415,23 @@ namespace Application_pour_medecin.ViewModels
 
         private void Modifier()
         {
-            if (Medecin.IsValid()) {
-            RestApiQueries restApiQueries = new RestApiQueries();
-            bool result = restApiQueries.EditInfo(Medecin, Token, "Home/Information");
-                MessageBox.Show("Modifier avec succés", "Error");
+            if (Medecin.IsValid())
+            {
+                RestApiQueries restApiQueries = new RestApiQueries();
+                bool result = restApiQueries.EditInfo(Medecin, Token, "Home/Information");
+                if (result)
+                {
+                    MessageBox.Show("Modifier avec succés", "Error");       
+                }
+                else
+                {
+                    MessageBox.Show("Erreur dans la modification", "Error");
+                }
             }
             else
             {
                 MessageBox.Show("Un champs est vide !","Error");
             }
-            //MessageBox.Show($"{Medecin.Nom}  +  {Medecin.Prenom}  +  {Medecin.Ville}   +  {Medecin.Genre}   + {Medecin.Date}  +   {Medecin.Date_Entree}");
         }
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -520,36 +527,9 @@ namespace Application_pour_medecin.ViewModels
                             {
                                 _predictString = "Résultat : Absence de maladie ";
                                 PredictString = _predictString;
-                            }
-                            //Models.Medecin medecin = new Models.Medecin();
-                            //return diagnosticResult;
-
+                            }                       
                         }
-                        /*
-                        if(KNN.TrainData != null)
-                        {
-                            Models.Diagnostic predictDiagnostique = new Models.Diagnostic() { thal = _selectedThal, cp = _selectedThor, ca = _selectedVais, oldpeak = _selectedDep };
-                            bool predict = KNN.Predict(predictDiagnostique);
-                            //Résultat: Presence \ Absence de maladie
-                            SelectedPatient.Diagnostic = predictDiagnostique;
-                            if (predict)
-                            {
-                                _predictString = "Résultat : Présence ";
-                                PredictString = _predictString;
-                                SelectedPatient.Diagnostic.target = 1;
-                            }
-                            else
-                            {
-                                _predictString = "Résultat : Absence de maladie ";
-                                PredictString = _predictString;
-                                SelectedPatient.Diagnostic.target = 0;
-
-                            }
-                            SelectedPatient.Diagnostic.thal = predictDiagnostique.thal;
-                            SelectedPatient.Diagnostic.ca = predictDiagnostique.ca;
-                            SelectedPatient.Diagnostic.cp = predictDiagnostique.cp;
-                            SelectedPatient.Diagnostic.oldpeak = predictDiagnostique.oldpeak;
-                        }*/
+                        
                         else
                             MessageBox.Show("Une erreur est survenue", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
 
@@ -584,7 +564,6 @@ namespace Application_pour_medecin.ViewModels
         private void OpenTrain()
         {
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
-            //Nullable<bool> result = dlg.ShowDialog();
             if (dlg.ShowDialog()==true)
             {
                 
@@ -636,14 +615,12 @@ namespace Application_pour_medecin.ViewModels
         {
             RestApiQueries restApiQueries = new RestApiQueries();
             Models.Medecin medecin = restApiQueries.GetInfo(Token, "Home/Information");
-            //Models.Medecin medecin = new Models.Medecin();
             return medecin;
         }
         private List<Models.Patient> Patients()
         {
             RestApiQueries restApiQueries = new RestApiQueries();
             List<Models.Patient> patients = restApiQueries.GetPatients(Token, "Home/Patients");
-            //Models.Medecin medecin = new Models.Medecin();
             return patients;
         }
 

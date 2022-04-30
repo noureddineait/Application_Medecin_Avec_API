@@ -83,6 +83,7 @@ namespace Application_pour_medecin.ViewModels
             Patient = patient;
             _villesPatient = new ObservableCollection<string>()
             {
+                "Berrechid",
                 "Casablanca",
                 "Marrakech",
                 "Tanger",
