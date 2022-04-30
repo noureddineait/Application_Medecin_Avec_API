@@ -106,6 +106,8 @@ namespace Application_pour_medecin.Models
                 !string.IsNullOrEmpty(this._genre)
                 );
         }
+        public int? MID { get; set; }
+
         private void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

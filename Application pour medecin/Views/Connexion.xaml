@@ -22,7 +22,7 @@
             
             <RowDefinition Height="15*"/>
         </Grid.RowDefinitions>
-        <Label Content="User"  Grid.Row="1" Margin="20 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
+        <Label Content="UserMail"  Grid.Row="1" Margin="20 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
         <Label Content="Password"  Grid.Row="2" Margin="20 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
         <TextBox x:Name="User" Text="{Binding Login.Email}" FontSize="22" Foreground="Gray" Margin="10 5 10 5" VerticalContentAlignment="center" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" />
         <PasswordBox PasswordChanged="PasswordBox_PasswordChanged" FontSize="22" Foreground="Gray" Margin="10 5 10 5" VerticalContentAlignment="center" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3"/>

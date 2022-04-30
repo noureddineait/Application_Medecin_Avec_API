@@ -10,6 +10,7 @@ namespace Application_pour_medecin.Models
 {
     public class Medecin : INotifyPropertyChanged
     {
+        public int MedecinId { get; set; }
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {

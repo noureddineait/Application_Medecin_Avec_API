@@ -466,7 +466,7 @@ namespace Application_pour_medecin.ViewModels
         private void AddPatient()
         {
             Patient.Genre = TextValue2;
-
+            Patient.MID = Medecin.MedecinId;
             if (Patient.IsValid())
             {
                 
